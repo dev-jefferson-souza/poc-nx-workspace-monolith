@@ -1,0 +1,12 @@
+<aside class="h-full surface-card border-right-1 surface-border p-2 flex flex-column gap-2">
+  @if (sidebarItems().length) { @for (item of sidebarItems(); track item.id) {
+  <p-button
+    [icon]="item.icon"
+    [rounded]="true"
+    [text]="true"
+    [pTooltip]="item.tooltip | translate"
+    tooltipPosition="right"
+    [routerLink]="item.routerLink"
+  />
+  } }
+</aside>

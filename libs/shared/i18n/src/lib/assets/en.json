@@ -18,6 +18,11 @@
       "home": "Home"
     }
   },
+  "sidebar": {
+    "home": "Home",
+    "mainApp": "Main App",
+    "usersDev": "Users Dev"
+  },
   "featureUsers": {
     "breadcrumb": {
       "users": "Users",

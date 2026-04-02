@@ -1,7 +1,10 @@
 <div class="flex flex-column h-screen w-full">
   <shared-header />
   <shared-breadcrumb />
-  <div class="flex-1 p-3">
-    <router-outlet />
+  <div class="flex flex-1 min-h-0">
+    <shared-sidebar class="h-full" />
+    <div class="flex-1 p-3 overflow-auto">
+      <router-outlet />
+    </div>
   </div>
 </div>

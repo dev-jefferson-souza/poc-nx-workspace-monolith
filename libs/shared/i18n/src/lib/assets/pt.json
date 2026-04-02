@@ -18,6 +18,11 @@
       "home": "Início"
     }
   },
+  "sidebar": {
+    "home": "Início",
+    "mainApp": "Aplicação Principal",
+    "usersDev": "Usuários Dev"
+  },
   "featureUsers": {
     "breadcrumb": {
       "users": "Usuários",
