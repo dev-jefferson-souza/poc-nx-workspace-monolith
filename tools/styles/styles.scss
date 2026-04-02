@@ -1,0 +1,148 @@
+@import './_theme.scss';
+
+@import 'primeng/resources/primeng.css';
+@import 'primeng/resources/primeng.min.css';
+@import 'primeflex/primeflex.scss';
+@import 'primeicons/primeicons.css';
+
+* {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+body {
+  background-color: var(--surface-ground);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv11', 'salt', 'ss01', 'ss03', 'cv01', 'cv02', 'cv03', 'cv04', 'cv05', 'cv06', 'cv09', 'cv10';
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 100px;
+    background-color: white;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: #c1c1c1;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.full-width {
+  width: 100%;
+}
+
+td,
+th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-container {
+  position: relative;
+  overflow: auto;
+}
+
+table {
+  min-height: 100px;
+}
+
+// Remove copyright from OpenLayers Maps
+.ol-attribution ul {
+  display: none !important;
+}
+
+.ol-viewport {
+  border-radius: 4px;
+}
+
+// -------------- SEVERITIES BACKGROUND --------------
+.CLEAR-bg {
+  background-color: var(--clear-color);
+}
+
+.CRITICAL-bg {
+  background-color: var(--critical-color);
+}
+
+.MAJOR-bg {
+  background-color: var(--major-color);
+}
+
+.MINOR-bg {
+  background-color: var(--minor-color);
+}
+
+.INFO-bg {
+  background-color: var(--info-color);
+}
+
+// -------------- SEVERITIES TEXT COLORS --------------
+.text-CLEAR {
+  color: var(--clear-color);
+}
+
+.text-CRITICAL {
+  color: var(--critical-color);
+}
+
+.text-MAJOR {
+  color: var(--major-color);
+}
+
+.text-MINOR {
+  color: var(--minor-color);
+}
+
+.text-INFO {
+  color: var(--info-color);
+}
+
+// LINK STYLES
+.link-action {
+  border-bottom: 1px dotted;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+  }
+}
+
+.p-dialog-header-icon {
+  color: var(--primary-color) !important;
+}
+
+p-selectbutton.w-full-for-items > .p-selectbutton > .p-button[role='button'] {
+  width: 100%;
+  padding: 0.25rem;
+}
+
+.breakline-and-monospace {
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+.hyperlink {
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--hiperlink-color);
+  }
+}

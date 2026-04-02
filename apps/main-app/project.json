@@ -5,6 +5,7 @@
   "prefix": "poc-nx-workspace-monolith",
   "sourceRoot": "apps/main-app/src",
   "tags": [],
+
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -17,8 +18,12 @@
         "tsConfig": "apps/main-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/main-app/src/favicon.ico", "apps/main-app/src/assets"],
-        "styles": ["apps/main-app/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "styles": [
+          "tools/styles/styles.scss",
+          { "input": "tools/styles/_theme-dark.css", "bundleName": "theme-dark", "inject": false },
+          { "input": "tools/styles/_theme-light.css", "bundleName": "theme-light", "inject": false }
+        ]
       },
       "configurations": {
         "production": {

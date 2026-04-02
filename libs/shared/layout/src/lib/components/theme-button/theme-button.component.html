@@ -1,0 +1,2 @@
+<p-button [icon]="currentIcon()" pTooltip="Alterar tema" [severity]="'secondary'" [text]="true" [rounded]="true" (onClick)="menu.toggle($event)" />
+<p-menu #menu [model]="menuItems()" [popup]="true" appendTo="body" />

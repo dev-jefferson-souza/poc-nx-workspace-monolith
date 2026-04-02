@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@poc-nx-workspace-monolith/shared/layout": ["libs/shared/layout/src/index.ts"],
+      "@poc-nx-workspace-monolith/shared/states": ["libs/shared/states/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
