@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { BadgeModule } from 'primeng/badge';
+import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
@@ -12,9 +14,9 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-user-list',
   standalone: true,
   templateUrl: './user-list.component.html',
-  imports: [CommonModule, TableModule, BadgeModule, SkeletonModule, CardModule],
+  imports: [CommonModule, TableModule, BadgeModule, SkeletonModule, CardModule, ButtonModule, RouterLink],
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
   readonly #usersService = inject(UsersService);
 
   users = signal<User[]>([]);

@@ -13,4 +13,8 @@ export class UsersService {
       { id: 3, name: 'Alice Doe', roles: ['ADMIN', 'USER', 'GUEST'], status: false },
     ] as User[]).pipe(delay(1000));
   }
+
+  getRoles() {
+    return of(['ADMIN', 'USER', 'DEV', 'GUEST'] as string[]).pipe(delay(1000));
+  }
 }
