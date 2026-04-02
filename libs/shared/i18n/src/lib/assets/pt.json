@@ -13,7 +13,10 @@
     "system": "Sistema"
   },
   "header": {
-    "title": "Smart Monolith with NX"
+    "title": "Smart Monolith with NX",
+    "breadcrumb": {
+      "home": "Início"
+    }
   },
   "featureUsers": {
     "breadcrumb": {
