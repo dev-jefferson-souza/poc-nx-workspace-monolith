@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { BreadcrumbService } from 'libs/shared/layout/src/lib/services/breadcrumb.services';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -18,6 +19,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserListComponent implements OnInit {
   readonly #usersService = inject(UsersService);
+  readonly #breadcrumbService = inject(BreadcrumbService);
 
   users = signal<User[]>([]);
 
@@ -26,6 +28,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUsers();
+    this.updateBreadcrumb();
   }
 
   private loadUsers() {
@@ -40,5 +43,11 @@ export class UserListComponent implements OnInit {
         next: (users) => this.users.set(users),
         error: () => this.error.set(true),
       });
+  }
+
+  private updateBreadcrumb() {
+    this.#breadcrumbService.setBreadcrumbItems({
+      items: [{ label: 'Usuários', routerLink: '/users' }],
+    });
   }
 }

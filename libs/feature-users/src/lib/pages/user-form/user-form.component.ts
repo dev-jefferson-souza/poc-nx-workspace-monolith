@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { BreadcrumbService } from 'libs/shared/layout/src/lib/services/breadcrumb.services';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputSwitchModule } from 'primeng/inputswitch';
@@ -14,21 +15,13 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterLink,
-    CardModule,
-    InputTextModule,
-    MultiSelectModule,
-    InputSwitchModule,
-    ButtonModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, CardModule, InputTextModule, MultiSelectModule, InputSwitchModule, ButtonModule],
 })
 export class UserFormComponent implements OnInit {
-  private readonly fb = inject(FormBuilder);
-  private readonly router = inject(Router);
-  private readonly usersService = inject(UsersService);
+  readonly #breadcrumbService = inject(BreadcrumbService);
+  readonly #fb = inject(FormBuilder);
+  readonly #router = inject(Router);
+  readonly #usersService = inject(UsersService);
 
   userForm!: FormGroup;
   roles = signal<string[]>([]);
@@ -37,10 +30,11 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.loadRoles();
+    this.updateBreadcrumb();
   }
 
   private initForm(): void {
-    this.userForm = this.fb.group({
+    this.userForm = this.#fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       roles: [[], [Validators.required]],
       status: [true],
@@ -49,7 +43,7 @@ export class UserFormComponent implements OnInit {
 
   private loadRoles(): void {
     this.loadingRoles.set(true);
-    this.usersService
+    this.#usersService
       .getRoles()
       .pipe(finalize(() => this.loadingRoles.set(false)))
       .subscribe((roles) => this.roles.set(roles));
@@ -59,7 +53,13 @@ export class UserFormComponent implements OnInit {
     if (this.userForm.valid) {
       console.log('User created:', this.userForm.value);
       // In a real app, we'd call the service to create the user here.
-      this.router.navigate(['/users']);
+      this.#router.navigate(['/users']);
     }
+  }
+
+  private updateBreadcrumb() {
+    this.#breadcrumbService.setBreadcrumbItems({
+      items: [{ label: 'Usuários', routerLink: '/users' }, { label: 'Cadastrar' }],
+    });
   }
 }
