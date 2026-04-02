@@ -1,0 +1,50 @@
+<p-card>
+  <span class="flex flex-column gap-1 mb-3">
+    <h2 class="text-xl font-bold">Listagem de usuários</h2>
+    <p class="text-400">Lista de usuários cadastrados no sistema.</p>
+  </span>
+  <p-table [value]="users()" [loading]="loading()" [showLoader]="false">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Roles</th>
+        <th>Status</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>
+          @for (role of user.roles; track role; let last = $last) {
+          <p-badge [value]="role" [class.mr-3]="!last" />
+          }
+        </td>
+        <td>
+          @if (user.status) {
+          <p-badge value="Active" />
+          } @else {
+          <p-badge value="Inactive" />
+          }
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4">No users found.</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+      @for(_ of [].constructor(4); track _) {
+      <tr>
+        @for(_ of [].constructor(4); track _) {
+        <td>
+          <p-skeleton width="100%" height="2rem" />
+        </td>
+        }
+      </tr>
+      }
+    </ng-template>
+  </p-table>
+</p-card>

@@ -53,7 +53,7 @@
   border: 1px solid var(--surface-border);
 
   .p-card-body {
-    padding: 0 !important;
+    padding: 0 0.5rem !important;
 
     .p-card-title {
       padding: 0.5rem !important;
@@ -153,11 +153,7 @@ p-card.content-overflow-y-auto {
 }
 
 // Table
-p-table
-  .p-datatable
-  .p-datatable-wrapper
-  .p-datatable-table
-  thead.p-datatable-thead {
+p-table .p-datatable .p-datatable-wrapper .p-datatable-table thead.p-datatable-thead {
   z-index: 1;
 }
 
@@ -197,12 +193,8 @@ p-table.ellipsis-on-table-instead-wrap {
   color: var(--dark-background-text-color);
 }
 
-.p-selectbutton
-  .p-button:not(.p-disabled):not(.p-highlight):hover
-  .p-button-icon-left,
-.p-selectbutton
-  .p-button:not(.p-disabled):not(.p-highlight):hover
-  .p-button-icon-right {
+.p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover .p-button-icon-left,
+.p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover .p-button-icon-right {
   color: var(--dark-background-text-color);
 }
 

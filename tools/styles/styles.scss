@@ -5,8 +5,15 @@
 @import 'primeflex/primeflex.scss';
 @import 'primeicons/primeicons.css';
 
-* {
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 body {

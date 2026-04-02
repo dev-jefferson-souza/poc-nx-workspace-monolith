@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@poc-nx-workspace-monolith/feature-users": ["libs/feature-users/src/index.ts"],
       "@poc-nx-workspace-monolith/shared/layout": ["libs/shared/layout/src/index.ts"],
       "@poc-nx-workspace-monolith/shared/states": ["libs/shared/states/src/index.ts"]
     }
