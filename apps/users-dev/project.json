@@ -1,0 +1,80 @@
+{
+  "name": "users-dev",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "poc-nx-workspace-monolith",
+  "sourceRoot": "apps/users-dev/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/users-dev",
+        "index": "apps/users-dev/src/index.html",
+        "browser": "apps/users-dev/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/users-dev/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/users-dev/src/favicon.ico", "apps/users-dev/src/assets"],
+        "scripts": [],
+        "styles": [
+          "tools/styles/styles.scss",
+          { "input": "tools/styles/_theme-dark.css", "bundleName": "theme-dark", "inject": false },
+          { "input": "tools/styles/_theme-light.css", "bundleName": "theme-light", "inject": false }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "users-dev:build:production"
+        },
+        "development": {
+          "buildTarget": "users-dev:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "users-dev:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/users-dev/jest.config.ts"
+      }
+    }
+  }
+}

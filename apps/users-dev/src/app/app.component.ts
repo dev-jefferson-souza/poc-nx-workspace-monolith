@@ -6,8 +6,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   selector: 'poc-nx-workspace-monolith-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'main-app';
+  title = 'users-dev';
 }
