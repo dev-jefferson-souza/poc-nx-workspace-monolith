@@ -2,60 +2,75 @@
   <div class="col-12 md:col-8 lg:col-6">
     <p-card>
       <div class="flex flex-column gap-1">
-        <h2 class="text-xl font-bold m-0">Cadastrar Novo Usuário</h2>
-        <p class="text-color-secondary font-normal text-sm">Preencha as informações abaixo para adicionar um novo membro à equipe.</p>
+        <h2 class="text-xl font-bold m-0">{{ 'featureUsers.form.title' | translate }}</h2>
+        <p class="text-color-secondary font-normal text-sm">{{ 'featureUsers.form.subtitle' | translate }}</p>
       </div>
 
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="flex flex-column gap-4 mt-3">
         <!-- Nome -->
         <div class="flex flex-column gap-2">
-          <label for="name" class="font-semibold">Nome Completo</label>
+          <label for="name" class="font-semibold">{{ 'featureUsers.form.name.label' | translate }}</label>
           <span class="p-input-icon-left">
             <i class="pi pi-user"></i>
             <input
               pInputText
               id="name"
               formControlName="name"
-              placeholder="Ex: Jefferson Souza"
+              [placeholder]="'featureUsers.form.name.placeholder' | translate"
               class="w-full"
               [class.ng-invalid]="userForm.get('name')?.invalid && userForm.get('name')?.touched"
             />
           </span>
           <small class="text-red-500" *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
-            @if (userForm.get('name')?.errors?.['required']) { O nome é obrigatório. } @else if (userForm.get('name')?.errors?.['minlength']) { O nome
-            deve ter pelo menos 3 caracteres. }
+            @if (userForm.get('name')?.errors?.['required']) {
+            {{ 'featureUsers.form.name.required' | translate }}
+            } @else if (userForm.get('name')?.errors?.['minlength']) {
+            {{ 'featureUsers.form.name.minlength' | translate }}
+            }
           </small>
         </div>
 
         <!-- Permissões -->
         <div class="flex flex-column gap-2">
-          <label for="roles" class="font-semibold">Níveis de Acesso</label>
+          <label for="roles" class="font-semibold">{{ 'featureUsers.form.roles.label' | translate }}</label>
           <p-multiSelect
             id="roles"
             [options]="roles()"
             formControlName="roles"
-            placeholder="Selecione as permissões"
+            [placeholder]="'featureUsers.form.roles.placeholder' | translate"
             display="chip"
             styleClass="w-full"
           />
           <small class="text-red-500" *ngIf="userForm.get('roles')?.invalid && userForm.get('roles')?.touched">
-            Selecione pelo menos uma permissão de acesso.
+            {{ 'featureUsers.form.roles.required' | translate }}
           </small>
         </div>
 
         <!-- Status -->
         <div class="flex align-items-center justify-content-between p-3 border-round surface-50">
           <div class="flex flex-column gap-1">
-            <span class="font-semibold">Conta Ativa</span>
-            <span class="text-sm text-color-secondary">Define se o usuário poderá realizar login imediatamente.</span>
+            <span class="font-semibold">{{ 'featureUsers.form.status.label' | translate }}</span>
+            <span class="text-sm text-color-secondary">{{ 'featureUsers.form.status.hint' | translate }}</span>
           </div>
           <p-inputSwitch id="status" formControlName="status"></p-inputSwitch>
         </div>
 
         <!-- Botões de Ação -->
         <div class="flex justify-content-end gap-3 pt-4 border-top-1 surface-border">
-          <p-button label="Cancelar" icon="pi pi-times" severity="secondary" [outlined]="true" routerLink="/users" />
-          <p-button type="submit" label="Salvar Usuário" icon="pi pi-check" styleClass="shadow-2 font-bold" [disabled]="userForm.invalid" />
+          <p-button
+            [label]="'featureUsers.form.actions.cancel' | translate"
+            icon="pi pi-times"
+            severity="secondary"
+            [outlined]="true"
+            routerLink="/users"
+          />
+          <p-button
+            type="submit"
+            [label]="'featureUsers.form.actions.save' | translate"
+            icon="pi pi-check"
+            styleClass="shadow-2 font-bold"
+            [disabled]="userForm.invalid"
+          />
         </div>
       </form>
     </p-card>

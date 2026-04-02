@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@poc-nx-workspace-monolith/feature-users": ["libs/feature-users/src/index.ts"],
+      "@poc-nx-workspace-monolith/shared/i18n": ["libs/shared/i18n/src/index.ts"],
       "@poc-nx-workspace-monolith/shared/layout": ["libs/shared/layout/src/index.ts"],
       "@poc-nx-workspace-monolith/shared/states": ["libs/shared/states/src/index.ts"]
     }

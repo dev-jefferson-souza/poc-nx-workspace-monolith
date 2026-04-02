@@ -1,9 +1,10 @@
 <p-button
-  [icon]="currentIcon()"
-  [pTooltip]="'theme.tooltip' | translate"
+  [icon]="'pi pi-language'"
+  [pTooltip]="'languages.tooltip' | translate"
   [severity]="'secondary'"
   [text]="true"
   [rounded]="true"
+  [label]="currentLanguage()"
   (onClick)="menu.toggle($event)"
 />
 <p-menu #menu [model]="menuItems()" [popup]="true" appendTo="body" />

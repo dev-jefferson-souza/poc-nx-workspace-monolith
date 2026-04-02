@@ -1,0 +1,61 @@
+{
+  "languages": {
+    "english": "English",
+    "portuguese": "Portuguese",
+    "menu": "Language",
+    "tooltip": "Change language"
+  },
+  "theme": {
+    "menu": "Theme",
+    "tooltip": "Change theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "header": {
+    "title": "Smart Monolith with NX"
+  },
+  "featureUsers": {
+    "breadcrumb": {
+      "users": "Users",
+      "create": "Create"
+    },
+    "list": {
+      "title": "Users List",
+      "subtitle": "Manage your team members and their access levels.",
+      "newUser": "New User",
+      "table": {
+        "id": "Id",
+        "name": "Name",
+        "roles": "Roles",
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive",
+        "empty": "No users found."
+      }
+    },
+    "form": {
+      "title": "Create New User",
+      "subtitle": "Fill in the information below to add a new team member.",
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Ex: John Doe",
+        "required": "Name is required.",
+        "minlength": "Name must be at least 3 characters long."
+      },
+      "roles": {
+        "label": "Access Levels",
+        "placeholder": "Select permissions",
+        "required": "Select at least one access permission."
+      },
+      "status": {
+        "label": "Active Account",
+        "hint": "Defines whether the user can log in immediately."
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "save": "Save User"
+      }
+    }
+  }
+}

@@ -1,16 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
-import { ThemeService } from '@poc-nx-workspace-monolith/shared/states';
-import { ButtonModule } from 'primeng/button';
-import { TooltipModule } from 'primeng/tooltip';
+import { LanguageButtonComponent } from '../language-button/language-button.component';
 import { ThemeButtonComponent } from '../theme-button/theme-button.component';
 
 @Component({
   selector: 'shared-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [RouterLink, ButtonModule, TooltipModule, ThemeButtonComponent],
+  imports: [RouterLink, ThemeButtonComponent, LanguageButtonComponent, TranslateModule],
 })
-export class HeaderComponent {
-  readonly themeService: ThemeService = inject(ThemeService);
-}
+export class HeaderComponent {}

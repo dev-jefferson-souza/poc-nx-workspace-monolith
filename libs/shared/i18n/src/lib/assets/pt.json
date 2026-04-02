@@ -1,0 +1,61 @@
+{
+  "languages": {
+    "english": "Inglês",
+    "portuguese": "Português",
+    "menu": "Idioma",
+    "tooltip": "Alterar idioma"
+  },
+  "theme": {
+    "menu": "Tema",
+    "tooltip": "Alterar tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "header": {
+    "title": "Smart Monolith with NX"
+  },
+  "featureUsers": {
+    "breadcrumb": {
+      "users": "Usuários",
+      "create": "Cadastrar"
+    },
+    "list": {
+      "title": "Listagem de Usuários",
+      "subtitle": "Gerencie os membros da sua equipe e seus níveis de acesso.",
+      "newUser": "Novo Usuário",
+      "table": {
+        "id": "Id",
+        "name": "Nome",
+        "roles": "Perfis",
+        "status": "Status",
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "empty": "Nenhum usuário encontrado."
+      }
+    },
+    "form": {
+      "title": "Cadastrar Novo Usuário",
+      "subtitle": "Preencha as informações abaixo para adicionar um novo membro à equipe.",
+      "name": {
+        "label": "Nome Completo",
+        "placeholder": "Ex: Jefferson Souza",
+        "required": "O nome é obrigatório.",
+        "minlength": "O nome deve ter pelo menos 3 caracteres."
+      },
+      "roles": {
+        "label": "Níveis de Acesso",
+        "placeholder": "Selecione as permissões",
+        "required": "Selecione pelo menos uma permissão de acesso."
+      },
+      "status": {
+        "label": "Conta Ativa",
+        "hint": "Define se o usuário poderá realizar login imediatamente."
+      },
+      "actions": {
+        "cancel": "Cancelar",
+        "save": "Salvar Usuário"
+      }
+    }
+  }
+}

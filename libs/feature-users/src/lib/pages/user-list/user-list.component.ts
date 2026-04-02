@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, effect, inject, signal } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '@poc-nx-workspace-monolith/shared/i18n';
 import { RouterLink } from '@angular/router';
 import { BreadcrumbService } from 'libs/shared/layout/src/lib/services/breadcrumb.services';
 import { BadgeModule } from 'primeng/badge';
@@ -15,20 +17,31 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-user-list',
   standalone: true,
   templateUrl: './user-list.component.html',
-  imports: [CommonModule, TableModule, BadgeModule, SkeletonModule, CardModule, ButtonModule, RouterLink],
+  imports: [CommonModule, TableModule, BadgeModule, SkeletonModule, CardModule, ButtonModule, RouterLink, TranslateModule],
 })
 export class UserListComponent implements OnInit {
   readonly #usersService = inject(UsersService);
   readonly #breadcrumbService = inject(BreadcrumbService);
+  readonly #translateService = inject(TranslateService);
+  readonly #languageService = inject(LanguageService);
 
   users = signal<User[]>([]);
 
   error = signal(false);
   loading = signal(false);
 
+  constructor() {
+    effect(
+      () => {
+        this.#languageService.currentLanguage();
+        this.updateBreadcrumb();
+      },
+      { allowSignalWrites: true }
+    );
+  }
+
   ngOnInit(): void {
     this.loadUsers();
-    this.updateBreadcrumb();
   }
 
   private loadUsers() {
@@ -47,7 +60,7 @@ export class UserListComponent implements OnInit {
 
   private updateBreadcrumb() {
     this.#breadcrumbService.setBreadcrumbItems({
-      items: [{ label: 'Usuários', routerLink: '/users' }],
+      items: [{ label: this.#translateService.instant('featureUsers.breadcrumb.users'), routerLink: '/users' }],
     });
   }
 }

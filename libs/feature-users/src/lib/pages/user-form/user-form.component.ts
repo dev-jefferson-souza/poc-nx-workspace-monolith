@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, effect, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '@poc-nx-workspace-monolith/shared/i18n';
 import { Router, RouterLink } from '@angular/router';
 import { BreadcrumbService } from 'libs/shared/layout/src/lib/services/breadcrumb.services';
 import { ButtonModule } from 'primeng/button';
@@ -15,10 +17,22 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, CardModule, InputTextModule, MultiSelectModule, InputSwitchModule, ButtonModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+    CardModule,
+    InputTextModule,
+    MultiSelectModule,
+    InputSwitchModule,
+    ButtonModule,
+    TranslateModule,
+  ],
 })
 export class UserFormComponent implements OnInit {
   readonly #breadcrumbService = inject(BreadcrumbService);
+  readonly #translateService = inject(TranslateService);
+  readonly #languageService = inject(LanguageService);
   readonly #fb = inject(FormBuilder);
   readonly #router = inject(Router);
   readonly #usersService = inject(UsersService);
@@ -27,10 +41,19 @@ export class UserFormComponent implements OnInit {
   roles = signal<string[]>([]);
   loadingRoles = signal(false);
 
+  constructor() {
+    effect(
+      () => {
+        this.#languageService.currentLanguage();
+        this.updateBreadcrumb();
+      },
+      { allowSignalWrites: true }
+    );
+  }
+
   ngOnInit(): void {
     this.initForm();
     this.loadRoles();
-    this.updateBreadcrumb();
   }
 
   private initForm(): void {
@@ -59,7 +82,10 @@ export class UserFormComponent implements OnInit {
 
   private updateBreadcrumb() {
     this.#breadcrumbService.setBreadcrumbItems({
-      items: [{ label: 'Usuários', routerLink: '/users' }, { label: 'Cadastrar' }],
+      items: [
+        { label: this.#translateService.instant('featureUsers.breadcrumb.users'), routerLink: '/users' },
+        { label: this.#translateService.instant('featureUsers.breadcrumb.create') },
+      ],
     });
   }
 }

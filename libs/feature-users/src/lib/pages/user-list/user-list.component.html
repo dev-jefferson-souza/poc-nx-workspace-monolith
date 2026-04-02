@@ -1,19 +1,19 @@
 <p-card>
   <div class="flex flex-wrap justify-content-between align-items-center gap-3">
     <div class="flex flex-column gap-1">
-      <h2 class="text-xl font-bold m-0">Listagem de Usuários</h2>
-      <p class="text-color-secondary font-normal text-sm">Gerencie os membros da sua equipe e seus níveis de acesso.</p>
+      <h2 class="text-xl font-bold m-0">{{ 'featureUsers.list.title' | translate }}</h2>
+      <p class="text-color-secondary font-normal text-sm">{{ 'featureUsers.list.subtitle' | translate }}</p>
     </div>
-    <p-button label="Novo Usuário" icon="pi pi-user-plus" styleClass="shadow-2 font-bold" routerLink="create" />
+    <p-button [label]="'featureUsers.list.newUser' | translate" icon="pi pi-user-plus" styleClass="shadow-2 font-bold" routerLink="create" />
   </div>
 
   <p-table [value]="users()" [loading]="loading()" [showLoader]="false" styleClass="p-datatable-sm mt-3">
     <ng-template pTemplate="header">
       <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Roles</th>
-        <th>Status</th>
+        <th>{{ 'featureUsers.list.table.id' | translate }}</th>
+        <th>{{ 'featureUsers.list.table.name' | translate }}</th>
+        <th>{{ 'featureUsers.list.table.roles' | translate }}</th>
+        <th>{{ 'featureUsers.list.table.status' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
@@ -27,16 +27,16 @@
         </td>
         <td>
           @if (user.status) {
-          <p-badge value="Active" />
+          <p-badge [value]="'featureUsers.list.table.active' | translate" />
           } @else {
-          <p-badge value="Inactive" />
+          <p-badge [value]="'featureUsers.list.table.inactive' | translate" />
           }
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="4">No users found.</td>
+        <td colspan="4">{{ 'featureUsers.list.table.empty' | translate }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="loadingbody">
