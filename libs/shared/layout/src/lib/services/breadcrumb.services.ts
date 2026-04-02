@@ -11,7 +11,7 @@ export class BreadcrumbService {
   readonly #languageService = inject(LanguageService);
 
   breadcrumbItems = signal<MenuItem[]>([]);
-  homeItem = signal<MenuItem>({ label: 'header.breadcrumb.home', icon: 'pi pi-home mr-2', url: '/' });
+  homeItem = signal<MenuItem>({ label: 'header.breadcrumb.home', icon: 'pi pi-home mr-2', routerLink: '/' });
 
   translatedBreadcrumbItems = computed(() => {
     this.#languageService.currentLanguage();
